@@ -9,6 +9,7 @@ public class InstrumentenVerwaltung {
     public void add(Instrument instrumente){
         instrumenteList.add(instrumente);
     }
+    @SuppressWarnings("unused")
     public void delete(Instrument instrumente){
         instrumenteList.remove(instrumente);
     }
