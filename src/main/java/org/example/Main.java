@@ -13,9 +13,12 @@ public class Main {
         Instrument klavier =new Instrument("Klavier",1000,"Yamaha");
         instrumentenVerwaltung.add(guitar);
         instrumentenVerwaltung.add(klavier);
+        instrumentenVerwaltung.delete(klavier);
 
         List<Instrument> alleInstrumente = instrumentenVerwaltung.get();
-        alleInstrumente.forEach( element -> System.out.println(element.getInstrumentenArt()));
+        alleInstrumente.forEach(element -> System.out.println(element.getInstrumentenArt()));
+        alleInstrumente.forEach( element -> System.out.println(element.getPreis()));
+        alleInstrumente.forEach( element -> System.out.println(element.getMarke()));
         var jexxaMain = new JexxaMain(Main.class);
 
         jexxaMain
