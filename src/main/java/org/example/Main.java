@@ -2,6 +2,8 @@ package org.example;
 
 import io.jexxa.core.JexxaMain;
 import io.jexxa.drivingadapter.rest.RESTfulRPCAdapter;
+import org.example.domain.Instrument;
+import org.example.domain.InstrumentenVerwaltung;
 
 import java.util.List;
 
