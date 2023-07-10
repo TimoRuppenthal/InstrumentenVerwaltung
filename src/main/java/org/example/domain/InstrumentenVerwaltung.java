@@ -1,21 +1,22 @@
 package org.example.domain;
 
-import org.example.domain.Instrument;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class InstrumentenVerwaltung {
-    private final List<Instrument> instrumenteList  = new ArrayList<>();
+    private final InstrumentenRepository instrumentenRepository;
 
-    public void add(Instrument instrumente){
-        instrumenteList.add(instrumente);
+    public void add(Instrument instrument){
+        instrumentenRepository.add(instrument);
     }
     @SuppressWarnings("unused")
-    public void delete(Instrument instrumente){
-        instrumenteList.remove(instrumente);
+    public void delete(Instrument instrument){
+        instrumentenRepository.remove(instrument);
     }
-    public List<Instrument> get() {
-        return instrumenteList;
+
+    public List<Instrument> get(){
+        return instrumentenRepository.getAll();
+    }
+    public InstrumentenVerwaltung (InstrumentenRepository instrumentenRepository){
+        this.instrumentenRepository = instrumentenRepository;
     }
 }
