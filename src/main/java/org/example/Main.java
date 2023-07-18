@@ -2,34 +2,22 @@ package org.example;
 
 import io.jexxa.core.JexxaMain;
 import io.jexxa.drivingadapter.rest.RESTfulRPCAdapter;
-import org.example.domain.Instrument;
 import org.example.domain.InstrumentenRepository;
 import org.example.domain.InstrumentenVerwaltung;
+import org.example.domainservice.StammdatenService;
 import org.example.infrastructure.drivenadapter.persistence.InstrumentenRepositoryImpl;
 
-import java.util.List;
-
 public class Main {
-    public String InstrumentenVerwaltung() {
-        return "InstrumentenVerwaltung";
-    }
 
     @SuppressWarnings("java:S106") //Okey da Demoprojekt
     public static void main(String[] args) {
         InstrumentenRepository instrumentenRepository = new InstrumentenRepositoryImpl();
 
         InstrumentenVerwaltung instrumentenVerwaltung = new InstrumentenVerwaltung(instrumentenRepository);
-        Instrument guitar =new Instrument("Gitarre",450,"Fender");
-        Instrument klavier =new Instrument("Klavier",1000,"Yamaha");
 
-        instrumentenVerwaltung.add(guitar);
-        instrumentenVerwaltung.add(klavier);
-        instrumentenVerwaltung.delete(klavier);
+        StammdatenService stammdatenService = new StammdatenService(instrumentenRepository);
+        stammdatenService.initStammdaten();
 
-        List<Instrument> alleInstrumente = instrumentenVerwaltung.get();
-        alleInstrumente.forEach(element -> System.out.println(element.getInstrumentenArt()));
-        alleInstrumente.forEach( element -> System.out.println(element.getPreis()));
-        alleInstrumente.forEach( element -> System.out.println(element.getMarke()));
         var jexxaMain = new JexxaMain(Main.class);
 
         jexxaMain
