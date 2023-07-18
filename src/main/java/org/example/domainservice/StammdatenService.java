@@ -6,6 +6,10 @@ import org.example.domain.InstrumentenRepository;
 import java.util.List;
 
 public class StammdatenService {
+
+    private static final Instrument Gitarre = new Instrument("Gitarre", 450, "Fender");
+    private static final Instrument Klavier = new Instrument("Klavier", 1000, "Yamaha");
+
     private final InstrumentenRepository instrumentenRepository;
 
     public StammdatenService(InstrumentenRepository instrumentenRepository){
@@ -13,17 +17,18 @@ public class StammdatenService {
     }
 
     public void initStammdaten(){
-        List<Instrument> alleInstrumente = instrumentenRepository.getAll();
-        if(!alleInstrumente.contains(new Instrument("Gitarre", 450, "Fender"))){
-            instrumentenRepository.add(new Instrument("Gitarre", 450, "Fender"));
+
+            List<Instrument> alleInstrumente = instrumentenRepository.getAll();
+            if(!alleInstrumente.contains(Gitarre)){
+                instrumentenRepository.add(Gitarre);
+            }
+            if(!alleInstrumente.contains(Klavier)){
+                instrumentenRepository.add(Klavier);
+            }
+            instrumentenRepository
+                    .getAll()
+                    .forEach( element -> System.out.println(element.getInstrumentenArt()));
         }
-        if(!alleInstrumente.contains(new Instrument("Klavier", 1000, "Yamaha"))){
-            instrumentenRepository.add(new Instrument("Klavier", 1000, "Yamaha"));
     }
-        instrumentenRepository
-                .getAll()
-                .forEach( element -> System.out.println(element.getInstrumentenArt()));
-    }
-}
 
 
