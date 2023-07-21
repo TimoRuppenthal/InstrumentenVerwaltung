@@ -7,8 +7,8 @@ import java.util.List;
 
 public class StammdatenService {
 
-    private static final Instrument Gitarre = new Instrument("Gitarre", 450, "Fender");
-    private static final Instrument Klavier = new Instrument("Klavier", 1000, "Yamaha");
+    private static final Instrument Gitarre = new Instrument("Gitarre", 450, "Fender", 123);
+    private static final Instrument Klavier = new Instrument("Klavier", 1000, "Yamaha", 234);
 
     private final InstrumentenRepository instrumentenRepository;
 

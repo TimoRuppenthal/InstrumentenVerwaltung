@@ -7,11 +7,14 @@ public class Instrument {
     private final int preis;
     private final String marke;
 
+    private final int seriennummer;
 
-    public Instrument(String instrumentenArt, int preis, String marke) {
+
+    public Instrument(String instrumentenArt, int preis, String marke, int seriennummer) {
         this.instrumentenArt = instrumentenArt;
         this.preis = preis;
         this.marke = marke;
+        this.seriennummer = seriennummer;
     }
 
     @Override
@@ -19,12 +22,12 @@ public class Instrument {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Instrument instrument = (Instrument) o;
-        return Objects.equals(instrumentenArt, instrument.instrumentenArt) && Objects.equals(preis, instrument.preis) && Objects.equals(marke, instrument.marke);
+        return Objects.equals(instrumentenArt, instrument.instrumentenArt) && Objects.equals(preis, instrument.preis) && Objects.equals(marke, instrument.marke)&& Objects.equals(seriennummer, instrument.seriennummer);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(instrumentenArt, preis,marke);
+        return Objects.hash(instrumentenArt, preis, marke, seriennummer);
     }
 
 @SuppressWarnings("java:S106")
@@ -39,5 +42,7 @@ public class Instrument {
     public String getMarke() {
         return marke;
     }
+
+    public int getSeriennummer(){return seriennummer; }
 }
 

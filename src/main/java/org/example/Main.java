@@ -5,13 +5,14 @@ import io.jexxa.drivingadapter.rest.RESTfulRPCAdapter;
 import org.example.domain.InstrumentenRepository;
 import org.example.domain.InstrumentenVerwaltung;
 import org.example.domainservice.StammdatenService;
+import java.util.Properties;
 import org.example.infrastructure.drivenadapter.persistence.InstrumentenRepositoryImpl;
 
 public class Main {
 
     @SuppressWarnings("java:S106") //Okey da Demoprojekt
     public static void main(String[] args) {
-        InstrumentenRepository instrumentenRepository = new InstrumentenRepositoryImpl();
+        InstrumentenRepository instrumentenRepository = new InstrumentenRepositoryImpl(new Properties());
 
         InstrumentenVerwaltung instrumentenVerwaltung = new InstrumentenVerwaltung(instrumentenRepository);
 
