@@ -3,7 +3,7 @@ package org.example;
 import io.jexxa.core.JexxaMain;
 import io.jexxa.drivingadapter.rest.RESTfulRPCAdapter;
 import org.example.domain.InstrumentenRepository;
-import org.example.domain.InstrumentenVerwaltung;
+import org.example.applicationservice.InstrumentenVerwaltung;
 import org.example.domainservice.StammdatenService;
 import java.util.Properties;
 import org.example.infrastructure.drivenadapter.persistence.InstrumentenRepositoryImpl;
