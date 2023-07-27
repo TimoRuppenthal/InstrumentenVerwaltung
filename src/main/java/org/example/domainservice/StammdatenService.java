@@ -1,10 +1,12 @@
 package org.example.domainservice;
 
+import io.jexxa.addend.applicationcore.DomainService;
 import org.example.domain.Instrument;
 import org.example.domain.InstrumentenRepository;
 
 import java.util.List;
 
+@DomainService
 public class StammdatenService {
 
     private static final Instrument Gitarre = new Instrument("Gitarre", 450, "Fender", 123);

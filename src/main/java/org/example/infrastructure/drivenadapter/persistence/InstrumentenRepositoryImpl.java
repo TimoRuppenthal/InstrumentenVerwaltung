@@ -1,4 +1,5 @@
 package org.example.infrastructure.drivenadapter.persistence;
+import io.jexxa.addend.infrastructure.DrivenAdapter;
 import io.jexxa.infrastructure.RepositoryManager;
 import io.jexxa.infrastructure.persistence.repository.IRepository;
 import org.example.domain.Instrument;
@@ -7,6 +8,7 @@ import org.example.domain.InstrumentenRepository;
 import java.util.List;
 import java.util.Properties;
 
+@DrivenAdapter
 public class InstrumentenRepositoryImpl implements InstrumentenRepository {
     private final IRepository<Instrument, Integer> repository;
 

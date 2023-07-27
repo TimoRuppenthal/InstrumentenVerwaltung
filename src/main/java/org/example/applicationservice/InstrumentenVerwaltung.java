@@ -1,10 +1,12 @@
 package org.example.applicationservice;
 
+import io.jexxa.addend.applicationcore.ApplicationService;
 import org.example.domain.Instrument;
 import org.example.domain.InstrumentenRepository;
 
 import java.util.List;
 
+@ApplicationService
 public class InstrumentenVerwaltung {
     private final InstrumentenRepository instrumentenRepository;
 
