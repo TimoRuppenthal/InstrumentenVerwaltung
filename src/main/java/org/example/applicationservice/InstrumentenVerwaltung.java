@@ -4,6 +4,7 @@ import io.jexxa.addend.applicationcore.ApplicationService;
 import org.example.domain.Instrument;
 import org.example.domain.InstrumentenRepository;
 import org.example.domain.SerienNummer;
+import org.example.domain.InstrumentenDaten;
 
 import java.util.List;
 
@@ -11,8 +12,8 @@ import java.util.List;
 public class InstrumentenVerwaltung {
     private final InstrumentenRepository instrumentenRepository;
 
-    public void add(String instrumentenArt, int preis, String marke, SerienNummer seriennummer){
-        instrumentenRepository.add(new Instrument(instrumentenArt, preis, marke, seriennummer.seriennummer()));
+    public void add(SerienNummer seriennummer, InstrumentenDaten instrumentenDaten){
+        instrumentenRepository.add(new Instrument(instrumentenDaten, seriennummer));
     }
     @SuppressWarnings("unused")
     public void delete(SerienNummer serienNummer){
