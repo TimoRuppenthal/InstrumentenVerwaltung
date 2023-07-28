@@ -4,13 +4,14 @@ import io.jexxa.infrastructure.RepositoryManager;
 import io.jexxa.infrastructure.persistence.repository.IRepository;
 import org.example.domain.Instrument;
 import org.example.domain.InstrumentenRepository;
+import org.example.domain.SerienNummer;
 
 import java.util.List;
 import java.util.Properties;
 
 @DrivenAdapter
 public class InstrumentenRepositoryImpl implements InstrumentenRepository {
-    private final IRepository<Instrument, Integer> repository;
+    private final IRepository<Instrument, SerienNummer> repository;
 
     public InstrumentenRepositoryImpl(Properties properties){
         this.repository = RepositoryManager.getRepository(Instrument.class, Instrument::getSeriennummer, properties);

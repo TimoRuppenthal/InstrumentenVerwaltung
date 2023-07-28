@@ -3,6 +3,7 @@ package org.example.applicationservice;
 import io.jexxa.addend.applicationcore.ApplicationService;
 import org.example.domain.Instrument;
 import org.example.domain.InstrumentenRepository;
+import org.example.domain.SerienNummer;
 
 import java.util.List;
 
@@ -18,9 +19,10 @@ public class InstrumentenVerwaltung {
         instrumentenRepository.remove(instrument);
     }
 
-    public List<Instrument> get(){
-        return instrumentenRepository.getAll();
+    public List<SerienNummer> get(){
+        return instrumentenRepository.getAll().stream().map(Instrument::getSeriennummer).toList();
     }
+
     public InstrumentenVerwaltung (InstrumentenRepository instrumentenRepository){
         this.instrumentenRepository = instrumentenRepository;
     }

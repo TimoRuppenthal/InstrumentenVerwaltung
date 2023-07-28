@@ -1,20 +1,22 @@
 package org.example.domain;
 
-import java.util.Objects;
+import io.jexxa.addend.applicationcore.Aggregate;
+import io.jexxa.addend.applicationcore.AggregateID;
 
+import java.util.Objects;
+@Aggregate
 public class Instrument {
     private final String instrumentenArt;
     private final int preis;
     private final String marke;
-
-    private final int seriennummer;
+    private final SerienNummer seriennummer;
 
 
     public Instrument(String instrumentenArt, int preis, String marke, int seriennummer) {
         this.instrumentenArt = instrumentenArt;
         this.preis = preis;
         this.marke = marke;
-        this.seriennummer = seriennummer;
+        this.seriennummer = new SerienNummer(seriennummer);
     }
 
     @Override
@@ -22,7 +24,7 @@ public class Instrument {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Instrument instrument = (Instrument) o;
-        return Objects.equals(instrumentenArt, instrument.instrumentenArt) && Objects.equals(preis, instrument.preis) && Objects.equals(marke, instrument.marke)&& Objects.equals(seriennummer, instrument.seriennummer);
+        return Objects.equals(getSeriennummer(), instrument.getSeriennummer());
     }
 
     @Override
@@ -42,7 +44,7 @@ public class Instrument {
     public String getMarke() {
         return marke;
     }
-
-    public int getSeriennummer(){return seriennummer; }
+@AggregateID
+    public SerienNummer getSeriennummer(){return seriennummer; }
 }
 
