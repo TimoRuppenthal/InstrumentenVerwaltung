@@ -11,16 +11,19 @@ import java.util.List;
 public class InstrumentenVerwaltung {
     private final InstrumentenRepository instrumentenRepository;
 
-    public void add(Instrument instrument){
-        instrumentenRepository.add(instrument);
+    public void add(String instrumentenArt, int preis, String marke, SerienNummer seriennummer){
+        instrumentenRepository.add(new Instrument(instrumentenArt, preis, marke, seriennummer.seriennummer()));
     }
     @SuppressWarnings("unused")
-    public void delete(Instrument instrument){
-        instrumentenRepository.remove(instrument);
+    public void delete(SerienNummer serienNummer){
+        instrumentenRepository.remove(serienNummer);
     }
 
     public List<SerienNummer> get(){
-        return instrumentenRepository.getAll().stream().map(Instrument::getSeriennummer).toList();
+        return instrumentenRepository.getAll()
+                .stream()
+                .map(Instrument::getSeriennummer)
+                .toList();
     }
 
     public InstrumentenVerwaltung (InstrumentenRepository instrumentenRepository){

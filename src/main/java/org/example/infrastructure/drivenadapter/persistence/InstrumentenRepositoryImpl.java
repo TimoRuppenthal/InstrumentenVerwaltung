@@ -22,8 +22,8 @@ public class InstrumentenRepositoryImpl implements InstrumentenRepository {
     }
 
     @Override
-    public void remove(Instrument instrument) {
-        repository.remove(instrument.getSeriennummer());
+    public void remove(SerienNummer serienNummer) {
+        repository.remove(serienNummer);
 
     }
 

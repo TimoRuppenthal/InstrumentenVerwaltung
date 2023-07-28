@@ -8,7 +8,7 @@ import java.util.List;
 public interface InstrumentenRepository {
     List<Instrument> getAll();
 
-    void remove(Instrument instrument);
+    void remove(SerienNummer serienNummer);
 
     void add(Instrument instrument);
 }
