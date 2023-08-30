@@ -1,0 +1,75 @@
+# This workflow will build a Java project with Maven
+# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+
+name: Maven Test Build
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  maven_build:
+    name: Maven-Build (Linux)
+    runs-on: ubuntu-latest
+
+    # Service containers to run with `runner-job`
+    services:
+      activemq:
+        image: quay.io/artemiscloud/activemq-artemis-broker:latest
+        ports:
+          - 61616:61616
+        env:
+          AMQ_USER: admin
+          AMQ_PASSWORD: admin
+
+      postgres:
+        image: postgres
+        ports:
+          - 5432:5432
+        env:
+          POSTGRES_PASSWORD: admin
+          POSTGRES_USER: postgres
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set Release version env variable
+        run: |
+          echo "RELEASE_VERSION=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout)" >> $GITHUB_ENV
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+      - name: Build with Maven
+        run: |
+          mvn -B install --file pom.xml
+      - name: Generate project from jexxa-archetype
+        run: |
+          cd ~
+          mvn -B archetype:generate \
+           -DarchetypeCatalog=local \
+           -DarchetypeGroupId=io.jexxa \
+           -DarchetypeArtifactId=jexxa-archetype \
+           -DarchetypeVersion=${{ env.RELEASE_VERSION }} \
+           -DprojectName=JexxaProject \
+           -DgroupId=com.github.jexxaproject \
+           -DgithubAccount=jexxa-projects
+      - name: Build the project generated from jexxa-archetype
+        run: |
+          cd ~/JexxaProject
+          mvn -B clean install
+      - name: Generate project from jexxa-blank-archetype
+        run: |
+          cd ~
+          mvn -B archetype:generate \
+           -DarchetypeCatalog=local \
+           -DarchetypeGroupId=io.jexxa \
+           -DarchetypeArtifactId=jexxa-blank-archetype \
+           -DarchetypeVersion=${{ env.RELEASE_VERSION }} \
+           -DprojectName=JexxaBlankProject \
+           -DgroupId=com.github.jexxaproject \
+           -DgithubAccount=jexxa-projects
+      - name: Build the project generated from jexxa-blank-archetype
+        run: |
+          cd ~/JexxaBlankProject
+          mvn -B clean install
