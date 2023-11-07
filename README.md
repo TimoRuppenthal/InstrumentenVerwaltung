@@ -4,6 +4,7 @@ Dieses Projekt soll folgende Features anbieten:
 * Hinzufügen eines Instrumentes in die InstrumentenVerwaltung
 * Löschen eines Instrumentes aus der InstrumentenVerwaltung
 * Anzeigen der aktuell verfügbaren Instrumente in der InstrumentenVerwaltung
+* Die InstrumentenDaten eines Instrumentes können aktualisiert werden
 
 [User-Story Instrument registrieren]Als Manager der InstrumentenVerwaltung möchte ich, dass neue Instrumente beim Hinzufügen in die InstrumentenVerwaltung registriert werden müssen, damit diese automatisiert verifiziert werden können. 
 * Bei der Registrierung muss eine gültige E-Mail-Adresse und die InstrumentenDaten angegeben werden

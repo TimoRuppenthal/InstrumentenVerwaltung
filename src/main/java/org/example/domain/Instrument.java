@@ -6,11 +6,11 @@ import io.jexxa.addend.applicationcore.AggregateID;
 import java.util.Objects;
 @Aggregate
 public class Instrument {
-    private final InstrumentenDaten instrumentenDaten;
-    private final SerienNummer seriennummer;
+    private InstrumentenDaten instrumentenDaten;
+    private final VerifizierungsCode seriennummer;
 
 
-    public Instrument(InstrumentenDaten instrumentenDaten, SerienNummer seriennummer) {
+    public Instrument(InstrumentenDaten instrumentenDaten, VerifizierungsCode seriennummer) {
         this.instrumentenDaten = instrumentenDaten;
         this.seriennummer = seriennummer;
     }
@@ -36,6 +36,9 @@ public class Instrument {
         return instrumentenDaten.marke();
     }
 @AggregateID
-    public SerienNummer getSeriennummer(){return seriennummer; }
+    public VerifizierungsCode getSeriennummer(){return seriennummer; }
+    public void setInstrumentenDaten(InstrumentenDaten instrumentenDaten){
+        this.instrumentenDaten = instrumentenDaten;
+    }
 }
 

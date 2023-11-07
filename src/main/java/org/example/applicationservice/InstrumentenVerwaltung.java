@@ -33,4 +33,9 @@ public class InstrumentenVerwaltung {
         add(eMailAdresse,registrierungsDaten.getInstrumentenDaten());
         registrierungsDatenRepository.remove(eMailAdresse);
     }
+    public  void aktualisiereInstrumentenDaten(EMailAdresse emailAdresse, InstrumentenDaten instrumentenDaten){
+        Instrument instrument = instrumentenRepository.get(emailAdresse).orElseThrow();
+        instrument.setInstrumentenDaten(instrumentenDaten);
+        instrumentenRepository.update(instrument);
+    }
 }
