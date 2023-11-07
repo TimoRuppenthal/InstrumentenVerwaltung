@@ -7,12 +7,12 @@ import java.util.Objects;
 @Aggregate
 public class Instrument {
     private InstrumentenDaten instrumentenDaten;
-    private final VerifizierungsCode seriennummer;
+    private final EMailAdresse emailadresse;
 
 
-    public Instrument(InstrumentenDaten instrumentenDaten, VerifizierungsCode seriennummer) {
+    public Instrument(InstrumentenDaten instrumentenDaten, EMailAdresse emailadresse) {
         this.instrumentenDaten = instrumentenDaten;
-        this.seriennummer = seriennummer;
+        this.emailadresse = emailadresse;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class Instrument {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Instrument instrument = (Instrument) o;
-        return Objects.equals(getSeriennummer(), instrument.getSeriennummer());
+        return Objects.equals(getEMailAdresse(), instrument.getEMailAdresse());
     }
 
 @SuppressWarnings("java:S106")
@@ -36,7 +36,7 @@ public class Instrument {
         return instrumentenDaten.marke();
     }
 @AggregateID
-    public VerifizierungsCode getSeriennummer(){return seriennummer; }
+    public EMailAdresse getEMailAdresse(){return emailadresse; }
     public void setInstrumentenDaten(InstrumentenDaten instrumentenDaten){
         this.instrumentenDaten = instrumentenDaten;
     }

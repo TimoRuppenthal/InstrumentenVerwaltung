@@ -37,7 +37,7 @@ public class RegistrierungsDaten {
         publish(new VerifizierungsCodeVerschickt(emailAdresse, verifizierungsCode));
     }
     @AggregateID
-    public EmailAdresse getEmailAdresse() {
+    public EMailAdresse getEmailAdresse() {
         return emailAdresse;
     }
 }

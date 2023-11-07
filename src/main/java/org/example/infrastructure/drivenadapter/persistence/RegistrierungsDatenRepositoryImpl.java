@@ -17,7 +17,7 @@ public class RegistrierungsDatenRepositoryImpl implements RegistrierungsDatenRep
     private final IRepository<RegistrierungsDaten, EMailAdresse> repository;
 
     public RegistrierungsDatenRepositoryImpl(Properties properties){
-        this.repository = RepositoryManager.getRepository(RegistrierungsDaten.class, RegistrierungsDaten::getEMailAdresse,properties);
+        this.repository = RepositoryManager.getRepository(RegistrierungsDaten.class, RegistrierungsDaten::getEmailAdresse,properties);
     }
     public List<RegistrierungsDaten> getAll(){
         return repository.get();
