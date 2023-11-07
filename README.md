@@ -5,7 +5,17 @@ Dieses Projekt soll folgende Features anbieten:
 * Löschen eines Instrumentes aus der InstrumentenVerwaltung
 * Anzeigen der aktuell verfügbaren Instrumente in der InstrumentenVerwaltung
 
-[User-Story]Als Manager der InstrumentenVerwaltung möchte ich, dass neue Instrumente beim Hinzufügen eine Seriennummer sowie die E-Mail Adresse des vorherigen Besitzers erhalten, falls es Rückfragen gibt. 
-* Beim Hinzufügen muss eine gültige E-Mail-Adresse und die InstrumentenDaten angegeben werden
-* Es wird eine Seriennummer vergeben, die an die angegebene E-Mail-Adresse geschickt wird
-* Damit ein Instrument in die InstrumentenVerwaltung aufgenommen werden kann, müssen E-Mail-Adresse und Seriennummer übergeben werden
+[User-Story]Als Manager der InstrumentenVerwaltung möchte ich, dass neue Instrumente beim Hinzufügen in die InstrumentenVerwaltung registriert werden müssen, damit diese automatisiert verifiziert werden können. 
+* Bei der Registrierung muss eine gültige E-Mail-Adresse und die InstrumentenDaten angegeben werden
+* Es wird ein 6-stelliger Zahlencode an die angegebene E-Mail-Adresse verschickt
+* Damit ein Instrument in die InstrumentenVerwaltung aufgenommen werden kann, müssen E-Mail-Adresse und Zahlencode übergeben werden
+* Der Zahlencode verliert nach 24 Stunden seine Gültigkeit
+
+
+Abbildung auf DDD Mustersprache und Klassen
+
+Applicationservice: InstrumentenVerwaltung 
+ValueObject: E-Mail-Adresse, InstrumentenDaten, ZahlenCode
+Aggregate: RegistrierungsDaten
+Repository: RegistrierungsDatenRepository
+DomainEvent: ZahlenCodeVerschickt
