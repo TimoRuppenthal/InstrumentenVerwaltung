@@ -5,7 +5,7 @@ Dieses Projekt soll folgende Features anbieten:
 * Löschen eines Instrumentes aus der InstrumentenVerwaltung
 * Anzeigen der aktuell verfügbaren Instrumente in der InstrumentenVerwaltung
 
-[User-Story]Als Manager der InstrumentenVerwaltung möchte ich, dass neue Instrumente beim Hinzufügen in die InstrumentenVerwaltung registriert werden müssen, damit diese automatisiert verifiziert werden können. 
+[User-Story Instrument registrieren]Als Manager der InstrumentenVerwaltung möchte ich, dass neue Instrumente beim Hinzufügen in die InstrumentenVerwaltung registriert werden müssen, damit diese automatisiert verifiziert werden können. 
 * Bei der Registrierung muss eine gültige E-Mail-Adresse und die InstrumentenDaten angegeben werden
 * Es wird ein 6-stelliger Verifizierungscode an die angegebene E-Mail-Adresse verschickt
 * Damit ein Instrument in die InstrumentenVerwaltung aufgenommen werden kann, müssen E-Mail-Adresse und Verifizierungscode übergeben werden

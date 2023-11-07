@@ -7,6 +7,7 @@ import java.util.List;
 @ApplicationService
 public class InstrumentenVerwaltung {
     private final InstrumentenRepository instrumentenRepository;
+    private final RegistrierungsDatenRepository registrierungsDatenRepository;
 
     public void add(EMailAdresse eMailAdresse, InstrumentenDaten instrumentenDaten){
         instrumentenRepository.add(new Instrument(instrumentenDaten, eMailAdresse));
@@ -23,9 +24,12 @@ public class InstrumentenVerwaltung {
                 .toList();
     }
 
-    public InstrumentenVerwaltung(InstrumentenRepository instrumentenRepository){this.instrumentenRepository = instrumentenRepository;}
-    public void registriere(EMailAdresse eMailAdresse, InstrumentenDaten instrumentenDaten){
+    public InstrumentenVerwaltung(InstrumentenRepository instrumentenRepository, RegistrierungsDatenRepository registrierungsDatenRepository){this.instrumentenRepository = instrumentenRepository; this.registrierungsDatenRepository = registrierungsDatenRepository;}
+    public void registriere(EMailAdresse eMailAdresse, InstrumentenDaten instrumentenDaten){registrierungsDatenRepository.add(new RegistrierungsDaten(eMailAdresse, instrumentenDaten)); //TODO: Bestätigungscode verschicken
     }
-    public void verifiziere(EMailAdresse eMailAdresse, VerifizierungsCode verifizierungsCode){
+    public void verifiziere(EMailAdresse eMailAdresse, VerifizierungsCode verifizierungsCode) throws UngueltigerVerifizierungsCode {RegistrierungsDaten registrierungsDaten = registrierungsDatenRepository.get(eMailAdresse);
+        registrierungsDaten.verifiziere(verifizierungsCode);
+        add(eMailAdresse,registrierungsDaten.getInstrumentenDaten());
+        registrierungsDatenRepository.remove(eMailAdresse);
     }
 }
