@@ -2,6 +2,7 @@ package org.example.applicationservice;
 
 import io.jexxa.addend.applicationcore.ApplicationService;
 import org.example.domain.*;
+import org.example.domainservice.VerifizierungsCodeSender;
 import java.util.List;
 
 @ApplicationService
@@ -25,9 +26,9 @@ public class InstrumentenVerwaltung {
     }
 
     public InstrumentenVerwaltung(InstrumentenRepository instrumentenRepository, RegistrierungsDatenRepository registrierungsDatenRepository){this.instrumentenRepository = instrumentenRepository; this.registrierungsDatenRepository = registrierungsDatenRepository;}
-    public void registriere(EMailAdresse eMailAdresse, InstrumentenDaten instrumentenDaten){registrierungsDatenRepository.add(new RegistrierungsDaten(eMailAdresse, instrumentenDaten)); //TODO: Bestätigungscode verschicken
+    public void registriere(EMailAdresse eMailAdresse, InstrumentenDaten instrumentenDaten){registrierungsDatenRepository.add(new RegistrierungsDaten(eMailAdresse, instrumentenDaten));
     }
-    public void verifiziere(EMailAdresse eMailAdresse, VerifizierungsCode verifizierungsCode) throws UngueltigerVerifizierungsCode {RegistrierungsDaten registrierungsDaten = registrierungsDatenRepository.get(eMailAdresse);
+    public void verifiziere(EMailAdresse eMailAdresse, VerifizierungsCode verifizierungsCode) throws UngueltigerVerifizierungsCode {RegistrierungsDaten registrierungsDaten = registrierungsDatenRepository.get(eMailAdresse).orElseThrow();
         registrierungsDaten.verifiziere(verifizierungsCode);
         add(eMailAdresse,registrierungsDaten.getInstrumentenDaten());
         registrierungsDatenRepository.remove(eMailAdresse);

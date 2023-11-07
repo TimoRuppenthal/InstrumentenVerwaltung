@@ -1,6 +1,7 @@
 package org.example.domain;
 import io.jexxa.addend.applicationcore.Repository;
 import java.util.List;
+import java.util.Optional;
 @Repository
 public interface RegistrierungsDatenRepository {
     List<RegistrierungsDaten> getAll();
@@ -9,5 +10,5 @@ public interface RegistrierungsDatenRepository {
 
     void add(RegistrierungsDaten registrierungsDaten);
 
-    RegistrierungsDaten get(EMailAdresse eMailAdresse);
+    Optional<RegistrierungsDaten> get(EMailAdresse emailAdresse);
 }
