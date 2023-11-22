@@ -8,7 +8,7 @@ Dieses Projekt soll folgende Features anbieten:
 
 [User-Story Instrument registrieren]Als Manager der InstrumentenVerwaltung möchte ich, dass neue Instrumente beim Hinzufügen in die InstrumentenVerwaltung registriert werden müssen, damit diese automatisiert verifiziert werden können. 
 * Bei der Registrierung muss eine gültige E-Mail-Adresse und die InstrumentenDaten angegeben werden
-* Es wird ein 6-stelliger Verifizierungscode an die angegebene E-Mail-Adresse verschickt
+* Es wird eine UUID an die angegebene E-Mail-Adresse verschickt
 * Damit ein Instrument in die InstrumentenVerwaltung aufgenommen werden kann, müssen E-Mail-Adresse und Verifizierungscode übergeben werden
 * Der Verifizierungscode verliert nach 24 Stunden seine Gültigkeit
 
